@@ -1,0 +1,24 @@
+{
+  "name": "whatsapp-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start . --attach --name bot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adithyan R",
+  "license": "ISC",
+  "dependencies": {
+    "baileys": "git+https://github.com/WhiskeySockets/Baileys.git",
+    "dotenv": "^16.3.1",
+    "fs": "^0.0.1-security",
+    "node-webpmux": "^3.1.7",
+    "path": "^0.12.7",
+    "pm2": "^5.3.1",
+    "pg": "^8.11.5",
+    "sqlite3": "^5.1.7",
+    "sequelize": "^6.23.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
