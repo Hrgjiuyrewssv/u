@@ -6,7 +6,7 @@ const DATABASE_URL = process.env.DATABASE_URL || "./database.db";
 
 const toBool = (x) => x == 'true'
 module.exports = {
-  HANDLERS: (process.env.HANDLERS || '^[.,!]').trim(),
+  HANDLER: process.env.HANDLER  || 'null',
   MODE: (process.env.MODE || 'public').toLowerCase(),
   ERROR_MSG: toBool(process.env.ERROR_MSG) || true,
   LOG_MSG: toBool(process.env.LOG_MSG) || true,
