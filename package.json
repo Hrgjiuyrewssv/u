@@ -10,7 +10,7 @@
   "author": "Adithyan R",
   "license": "ISC",
   "dependencies": {
-    "@whiskeysockets/baileys": "^6.7.5",
+    "@whiskeysockets/baileys": "^6.7.4",
     "browser-id3-writer": "^4.4.0",
     "dotenv": "^16.3.1",
     "fluent-ffmpeg": "^2.1.3",
