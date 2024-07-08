@@ -8,10 +8,10 @@ Badan({
 	type: 'info'
 }, async (message) => {
 	const start = new Date().getTime();
-	const msg = await message.reply('*ᴩɪɴɢ...*');
+	const msg = await message.reply('*ρīnɠ*');
 	const end = new Date().getTime();
 	const responseTime = end - start;
-	await message.reply(`*pong!*\nʟᴀᴛᴇɴᴄʏ: ${responseTime}ms`);
+	await msg.edit(`*ρonɠ*\n*${responseTime} ɱș*`);
 });
 
 Badan({
