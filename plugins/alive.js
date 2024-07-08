@@ -1,6 +1,6 @@
-const { Index, mode, formatTime } = require('../lib/');
+const { Badan, mode, formatTime } = require('../lib/');
 
-Index({
+Badan({
 	pattern: 'ping ?(.*)',
 	fromMe: mode,
 	desc: 'Bot response in milliseconds.',
@@ -13,7 +13,7 @@ Index({
 	await message.reply(`*pong!*\nʟᴀᴛᴇɴᴄʏ: ${responseTime}ms`);
 });
 
-Index({
+Badan({
 	pattern: 'jid',
 	fromMe: mode,
 	desc: 'To get remoteJid',
@@ -22,11 +22,12 @@ Index({
 	await message.reply(message.mention[0] ? message.mention[0] : message.reply_message ? message.reply_message.sender : message.jid)
 });
 
-Index({
+
+Badan({
 	pattern: 'uptime',
 	fromMe: mode,
 	desc: 'Get bots runtime',
 	type: 'info'
 }, async (message, match, client) => {
 	await message.reply(formatTime(process.uptime()));
-})
+});
