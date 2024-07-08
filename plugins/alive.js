@@ -4,7 +4,7 @@ const { setMessage, getMessage, delMessage } = require("../lib/database");
 
 Badan({
 	pattern: "alive",
-        fromMe: true,
+        fromMe: mode,
         desc: "alive message",
         type: "user",
 }, async (message, match) => {
