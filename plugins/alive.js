@@ -1,5 +1,28 @@
 const { Badan, mode, formatTime, numToJid } = require('../lib/');
 const { ANTI_DELETE, SUDO } = require("../config")
+const { setMessage, getMessage, delMessage } = require("../lib/database");
+
+Badan({
+	pattern: "alive",
+        fromMe: true,
+        desc: "alive message",
+        type: "user",
+}, async (message, match) => {
+  let msg = await getMessage(m.client.user.id, "alive");
+  if (match.toLowerCase() == 'get') {
+  if (!msg) return await message.reply("_There is no alive set_");
+  return await message.reply(msg.message);
+  } else if (match.toLowerCase() == 'delete') {
+  if (!msg) return await message.reply("_There is no alive set_");
+  return await delMessage(m.client.user.id, "alive");
+  } else if (match) {
+  await setMessage(m.client.user.id, "alive", match);
+  return await message.reply("_Alive set successfully_");
+  } else if (!match) {
+  if (!msg) return await message.reply(`_There is no alive set_\n example: `);
+  return await message.sendAlive(message.jid)
+  }
+});
 
 Badan({
 	pattern: 'ping ?(.*)',
