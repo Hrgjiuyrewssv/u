@@ -3,7 +3,7 @@ const util = require("util");
 const config = require("../config");
 
 
-lib.Index({ pattern:'eval', on: "text", fromMe: true, desc :'Runs a server code'}, async (message, match) => {
+lib.Badan({ pattern:'eval', on: "text", fromMe: true, desc :'Runs a server code'}, async (message, match) => {
   if (message.text.startsWith(">")) {
     const m = message;
     try {
