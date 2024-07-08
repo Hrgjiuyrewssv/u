@@ -19,7 +19,7 @@ Index({
 	desc: 'To get remoteJid',
 	type: 'whatsapp'
 }, async (message) => {
-	await message.reply(message.mentionedJid[0] ? message.mentionedJid[0] : message.quoted ? message.quoted.sender : message.chat)
+	await message.reply(message.mention[0] ? message.mention[0] : message.reply_message ? message.reply_message.sender : message.jid)
 });
 
 Index({
