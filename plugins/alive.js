@@ -8,21 +8,21 @@ Badan({
         desc: "alive message",
         type: "user",
 }, async (message, match) => {
-  let msg = await getMessage(message.client.user.id, "alive");
-  if (match.toLowerCase() == 'get') {
-  if (!msg) return await message.reply("_There is no alive set_");
-  return await message.reply(msg.message);
-  } else if (match.toLowerCase() == 'delete') {
-  if (!msg) return await message.reply("_There is no alive set_");
-  return await delMessage(message.client.user.id, "alive");
-  return await message.reply("_Alive deleted successfully_");
-  } else if (match) {
-  await setMessage(message.client.user.id, "alive", match);
-  return await message.reply("_Alive set successfully_");
-  } else if (!match) {
-  if (!msg) return await message.reply(`_There is no alive set_\n example: `);
-  return await message.sendAlive(message.jid)
-  }
+	let msg = await getMessage(message.client.user.id, "alive");
+	if (match.toLowerCase() == 'get') {
+		if (!msg) return await message.reply("_there is no alive set_");
+		return await message.reply(msg.message);
+	} else if (match.toLowerCase() == 'delete') {
+		if (!msg) return await message.reply("_there is no alive set for delete_");
+		await delMessage(message.client.user.id, "alive");
+		return await message.reply("_alive deleted successfully_");
+	} else if (match) {
+		await setMessage(message.client.user.id, "alive", match);
+        return await message.reply("_alive set successfully_");
+	} else if (!match) {
+		if (!msg) return await message.reply(`_there is no alive set_\nexample: `);
+		return await message.sendAlive(message.jid)
+	}
 });
 
 Badan({
