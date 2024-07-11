@@ -1,29 +1,5 @@
 const { Badan, mode, formatTime, numToJid } = require('../lib/');
 const { ANTI_DELETE, SUDO } = require("../config")
-const { setMessage, getMessage, delMessage } = require("../lib/database");
-
-Badan({
-	pattern: "alive",
-        fromMe: mode,
-        desc: "alive message",
-        type: "user",
-}, async (message, match) => {
-	let msg = await getMessage(message.client.user.id, "alive");
-	if (match.toLowerCase() == 'get') {
-		if (!msg) return await message.reply("_there is no alive set_");
-		return await message.reply(msg.message);
-	} else if (match.toLowerCase() == 'delete') {
-		if (!msg) return await message.reply("_there is no alive set for delete_");
-		await delMessage(message.client.user.id, "alive");
-		return await message.reply("_alive deleted successfully_");
-	} else if (match) {
-		await setMessage(message.client.user.id, "alive", match);
-        return await message.reply("_alive set successfully_");
-	} else if (!match) {
-		if (!msg) return await message.reply(`_there is no alive set_\nexample: `);
-		return await message.sendAlive(message.jid)
-	}
-});
 
 Badan({
 	pattern: 'ping ?(.*)',
@@ -66,7 +42,7 @@ Badan({
 	if (ANTI_DELETE) {
 		let msg = await message.client.store.loadMessage(message.messageId);
 		let { pushName } = msg.message;
-		let name = pushName.trim().replace(/\s+/g, ' ');
+		let name = pushName.trim().replace(/\s+/g, ' ') || "unable to find the name";
 		let sudo = numToJid(SUDO.split(',')[0]) || message.client.user.id;
 		await message.forwardMessage(sudo, msg.message , { contextInfo: { isFrowarded: false, externalAdReply: { title: "deleted message", body: `from: ${name}`, mediaType: 2, thumbnail: "https://i.imgur.com/xItorgn.jpeg", mediaUrl: "", sourceUrl: "" }}, quoted: msg.message })
 	}
