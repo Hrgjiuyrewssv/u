@@ -25,7 +25,7 @@ Badan({
 });
 
 Badan({
-	pattern: "mention",
+    pattern: "mention",
     fromMe: true,
     desc: "mention message",
     type: "user",
@@ -58,3 +58,17 @@ Badan({
     return await message.reply("_Mention set successfully_");
   }
 );
+
+Badan({
+	on: "all",
+	fromMe: false,
+	dontAddCommandList: true,
+   },
+   async(message)=> {
+	let admins = message.sudo
+    let mention = message.mention
+    let isOwner = (admins.map((v) => mention.includes(v))).includes(true)
+    if(isOwner) {
+    await message.sendMention(message.jid)
+	}
+});
