@@ -1,4 +1,4 @@
-const { Index, mode } = require('../lib/');
+const { Badan, mode } = require('../lib/');
 const { setMessage, getMessage, delMessage, getStatus, toggleStatus } = require("../lib/database");
 
 Badan({
