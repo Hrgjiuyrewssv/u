@@ -1,4 +1,4 @@
-const { Badan, mode } = require('../lib/');
+const { Badan, mode, sendUrl } = require('../lib/');
 const { setMessage, getMessage, delMessage, getStatus, toggleStatus } = require("../lib/database");
 
 Badan({
@@ -39,23 +39,23 @@ Badan({
     }
     if (match.toLowerCase() == 'get') {
       let msg = await getMessage(message.client.user.id, "mention");
-      if (!msg) return await message.reply("_There is no mention set_");
+      if (!msg) return await message.reply("_there is no mention set_");
       return message.reply(msg.message);
     }
     if (match.toLowerCase() == 'on' && stat == "off") {
       await toggleStatus(message.client.user.id, "mention", true);
-      return await message.reply("_Mention enabled_");
+      return await message.reply("_mention enabled_");
     }
     if (match.toLowerCase() == 'off' && stat == "on") {
       await toggleStatus(message.client.user.id, "mention", false);
-      return await message.reply("_Mention disabled_");
+      return await message.reply("_mention disabled_");
     }
     if (match.toLowerCase() == 'delete') {
       await delMessage(message.client.user.id, "mention");
-      return await message.reply("_Mention deleted successfully_");
+      return await message.reply("_mention deleted successfully_");
     }
     await setMessage(message.client.user.id, "mention", match);
-    return await message.reply("_Mention set successfully_");
+    return await message.reply("_mention set successfully_");
   }
 );
 
@@ -76,3 +76,14 @@ Badan({
 		   return message.reply(error)
 	   }
    });
+
+Badan({
+	pattern: "url",
+        fromMe: mode,
+        desc: "alive message",
+        type: "user",
+},
+async(message)=> {
+if (message.reply_message.text || !["videoMessage", "imageMessage", "stickerMessage", "audioMessage"].includes(message.reply_message.type)) return await message.reply("_reply to audio, video, sticker or image_")
+await sendUrl(message, message.reply_message)
+});
