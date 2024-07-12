@@ -42,9 +42,19 @@
             "value":"false"
         },
         "READ_CMD": {
-            "description": "Read all messages",
+            "description": "Read all commands",
             "required": false,
             "value":"false"
+        },
+        "ANTI_DELETE": {
+            "description": "to get deleted messages",
+            "required": true,
+            "value":"true"
+        },
+        "WARN_COUNT": {
+            "description": "warn a user",
+            "required": true,
+            "value":"4"
         }
     },
       "addons": [{ "plan": "heroku-postgresql" }],
