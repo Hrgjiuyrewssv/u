@@ -65,9 +65,14 @@ Badan({
 	dontAddCommandList: true,
    },
    async(message) => {
-	let admins = message.sudo;
-    let isOwner = (admins.map((v) => message.mention.includes(v))).includes(true)
-    if(isOwner) {
-    await message.sendMention(message.jid)
-	}
-});
+	   try{
+		   let admins = message.sudo
+		   let mention = message.data.message[message.type]?.contextInfo?.mentionedJid || [];
+		   let isOwner = (admins.map((v) => mention.includes(v))).includes(true)
+		   if(isOwner == true) {
+			   await message.sendMention(message.jid)
+		   }
+	   }catch(error) {
+		   return message.reply(error)
+	   }
+   });
