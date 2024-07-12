@@ -44,7 +44,7 @@ Badan({
 		let { pushName } = msg.message;
 		let name = pushName.trim().replace(/\s+/g, ' ') || "unable to find the name";
 		let sudo = numToJid(SUDO.split(',')[0]) || message.client.user.id;
-		await message.forwardMessage(sudo, msg.message , { contextInfo: { isFrowarded: false, externalAdReply: { title: "deleted message", body: `from: ${name}`, mediaType: 2, thumbnail: "https://i.imgur.com/xItorgn.jpeg", mediaUrl: "", sourceUrl: "" }}, quoted: msg.message })
+		await message.forwardMessage(sudo, msg.message , { contextInfo: { isFrowarded: false, externalAdReply: { title: "deleted message", body: `from: ${name}`, mediaType: 1, thumbnailUrl: "https://i.imgur.com/xItorgn.jpeg", mediaUrl: "https://github.com/Kingbadan321/Zeta-XD", sourceUrl: "https://github.com/Kingbadan321/Zeta-XD" }}, quoted: msg.message })
 	}
 });
 
