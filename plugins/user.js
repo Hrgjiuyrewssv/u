@@ -1,5 +1,5 @@
-const { Badan, mode, formatTime, numToJid } = require('../lib/');
-const { ANTI_DELETE, SUDO } = require("../config")
+const { Badan, mode, formatTime, numToJid, setWarn, removeWarn } = require('../lib/');
+const { ANTI_DELETE, SUDO, WARN_COUNT } = require("../config")
 
 Badan({
 	pattern: 'ping ?(.*)',
@@ -46,4 +46,22 @@ Badan({
 		let sudo = numToJid(SUDO.split(',')[0]) || message.client.user.id;
 		await message.forwardMessage(sudo, msg.message , { contextInfo: { isFrowarded: false, externalAdReply: { title: "deleted message", body: `from: ${name}`, mediaType: 2, thumbnail: "https://i.imgur.com/xItorgn.jpeg", mediaUrl: "", sourceUrl: "" }}, quoted: msg.message })
 	}
+});
+
+Badan({
+	pattern: 'warn',
+	fromMe: true,
+	desc: 'To get remoteJid',
+	type: 'whatsapp'
+}, async (message, match) => {
+	await setWarn(message, match, WARN_COUNT)
+});
+
+Badan({
+	pattern: 'resetwarn',
+	fromMe: true,
+	desc: 'To get remoteJid',
+	type: 'whatsapp'
+}, async (message, match) => {
+	await removeWarn(message)
 });
