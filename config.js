@@ -13,6 +13,7 @@ module.exports = {
   READ_CMD: toBool(process.env.READ_CMD),
   READ_MSG: toBool(process.env.READ_MSG),
   ANTI_DELETE: toBool(process.env.ANTI_DELETE) || true,
+  WARN_COUNT: process.env.WARN_COUNT  || '3',
   SUDO: process.env.SUDO || '919539612761,917025673121',
   SESSION: process.env.SESSION || "bot--BYgcswHY",
   DATABASE:
