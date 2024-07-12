@@ -7,6 +7,8 @@ const DATABASE_URL = process.env.DATABASE_URL || "./database.db";
 const toBool = (x) => x == 'true'
 module.exports = {
   HANDLER: process.env.HANDLER  || 'null',
+  HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || '',
+  HEROKU_API_KEY: process.env.HEROKU_API_KEY || '',
   MODE: (process.env.MODE || 'public').toLowerCase(),
   ERROR_MSG: toBool(process.env.ERROR_MSG) || true,
   LOG_MSG: toBool(process.env.LOG_MSG) || true,
