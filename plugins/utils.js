@@ -87,3 +87,73 @@ async(message)=> {
 if (message.reply_message.text || !["videoMessage", "imageMessage", "stickerMessage", "audioMessage"].includes(message.reply_message.type)) return await message.reply("_reply to audio, video, sticker or image_")
 await sendUrl(message, message.reply_message)
 });
+
+Badan({
+    pattern: "welcome",
+    fromMe: true,
+    desc: "welcome message",
+    type: "user",
+}, async (message, match) => {
+    let status = await getStatus(message.jid, "welcome");
+    let stat = status ? "on" : "off";
+    if (!match) {
+      return await message.reply("check formats: badan-ser.xyz");
+    }
+    if (match.toLowerCase() == 'get') {
+      let msg = await getMessage(message.jid, "welcome");
+      if (!msg) return await message.reply("_there is no welcome set_");
+      return message.reply(msg.message);
+    }
+    if (match.toLowerCase() == 'on') {
+    if (stat == "on") return await message.reply("_already enabled_")
+      await toggleStatus(message.jid, "welcome", true);
+      return await message.reply("_welcome enabled_");
+    }
+     (match.toLowerCase() == 'off') {
+    if (stat == "off") return await message.reply("_already disabled_")
+      await toggleStatus(message.jid, "welcome", false);
+      return await message.reply("_welcome disabled_");
+    }
+    if (match.toLowerCase() == 'delete') {
+      await delMessage(message.jid, "welcome");
+      return await message.reply("_welcome deleted successfully_");
+    }
+    await setMessage(message.jid, "welcome", match);
+    return await message.reply("_welcome set successfully_");
+  }
+);
+
+Badan({
+    pattern: "goodbye",
+    fromMe: true,
+    desc: "goodbye message",
+    type: "user",
+}, async (message, match) => {
+    let status = await getStatus(message.jid, "goodbye");
+    let stat = status ? "on" : "off";
+    if (!match) {
+      return await message.reply("check formats: badan-ser.xyz");
+    }
+    if (match.toLowerCase() == 'get') {
+      let msg = await getMessage(message.jid, "goodbye");
+      if (!msg) return await message.reply("_there is no goodbye set_");
+      return message.reply(msg.message);
+    }
+    if (match.toLowerCase() == 'on') {
+    if (stat == "on") return await message.reply("_already enabled_")
+      await toggleStatus(message.jid, "goodbye", true);
+      return await message.reply("_goodbye enabled_");
+    }
+    if (match.toLowerCase() == 'off') {
+    if (stat == "off") return await message.reply("_already disabled_")
+      await toggleStatus(message.jid, "goodbye", false);
+      return await message.reply("_goodbye disabled_");
+    }
+    if (match.toLowerCase() == 'delete') {
+      await delMessage(message.jid, "goodbye");
+      return await message.reply("_goodbye deleted successfully_");
+    }
+    await setMessage(message.jid, "goodbye", match);
+    return await message.reply("_goodbye set successfully_");
+  }
+);
