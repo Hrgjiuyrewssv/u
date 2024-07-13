@@ -84,7 +84,7 @@ Badan({
         type: "user",
 },
 async(message)=> {
-if (message.reply_message.text || !["videoMessage", "imageMessage", "stickerMessage", "audioMessage"].includes(message.reply_message.type)) return await message.reply("_reply to audio, video, sticker or image_")
+if (!["videoMessage", "imageMessage", "stickerMessage", "audioMessage"].includes(message.reply_message.type)) return await message.reply("_reply to audio, video, sticker or image_")
 await sendUrl(message, message.reply_message)
 });
 
