@@ -109,7 +109,7 @@ Badan({
       await toggleStatus(message.jid, "welcome", true);
       return await message.reply("_welcome enabled_");
     }
-     (match.toLowerCase() == 'off') {
+    if (match.toLowerCase() == 'off') {
     if (stat == "off") return await message.reply("_already disabled_")
       await toggleStatus(message.jid, "welcome", false);
       return await message.reply("_welcome disabled_");
