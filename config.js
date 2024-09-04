@@ -16,7 +16,7 @@ module.exports = {
   READ_MSG: toBool(process.env.READ_MSG),
   ANTI_DELETE: toBool(process.env.ANTI_DELETE) || true,
   WARN_COUNT: process.env.WARN_COUNT  || '3',
-  SUDO: process.env.SUDO || '919539612761,917025673121',
+  SUDO: process.env.SUDO || '919539612761,918891871875',
   SESSION: process.env.SESSION || "bot--U172nYwE",
   DATABASE:
     DATABASE_URL === "./database.db"
