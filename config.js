@@ -14,7 +14,7 @@ module.exports = {
   LOG_MSG: toBool(process.env.LOG_MSG) || true,
   READ_CMD: toBool(process.env.READ_CMD),
   READ_MSG: toBool(process.env.READ_MSG),
-  ANTI_DELETE: toBool(process.env.ANTI_DELETE) || true,
+  ANTI_DELETE: toBool(process.env.ANTI_DELETE) || false,
   WARN_COUNT: process.env.WARN_COUNT  || '3',
   SUDO: process.env.SUDO || '919747257996',
   SESSION: process.env.SESSION || "bot--U172nYwE",
