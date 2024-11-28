@@ -12,6 +12,7 @@
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.4",
     "browser-id3-writer": "^4.4.0",
+    "express": "latest",
     "cheerio": "^1.0.0-rc.10",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.3.1",
