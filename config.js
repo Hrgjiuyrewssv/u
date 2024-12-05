@@ -17,7 +17,7 @@ module.exports = {
   ANTI_DELETE: toBool(process.env.ANTI_DELETE) || false,
   WARN_COUNT: process.env.WARN_COUNT  || '3',
   SUDO: process.env.SUDO || '919747257996',
-  SESSION: process.env.SESSION || "Zeta-XD÷qR9XCDhL#57n6e-LM0t38RTq5obzuRNc3Xu5S2WK4oRkeaXk4xE8",
+  SESSION: process.env.SESSION || "Zeta-XD÷GYtEWRTB#UTD7MR42NKphuZe--FmYf2MQFpZPcamP74pkrGtik-4",
   DATABASE:
     DATABASE_URL === "./database.db"
       ? new Sequelize({
